@@ -1,0 +1,21 @@
+version: '0.1'
+services:
+  database:
+    build: postgres/
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_DB: boilerplace-kotlin-react
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 12345
+
+  database_test:
+    build: postgres/
+    ports:
+      - "5433:5432"
+    restart: always
+    environment:
+      POSTGRES_DB: boilerplace-kotlin-react-tests
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 12345
