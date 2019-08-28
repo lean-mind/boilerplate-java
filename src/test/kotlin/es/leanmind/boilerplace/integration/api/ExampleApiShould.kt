@@ -1,15 +1,13 @@
 @file:Suppress("ASSIGNING_SINGLE_ELEMENT_TO_VARARG_IN_NAMED_FORM_ANNOTATION")
 
-package es.leanmind.boilerplace.integration
+package es.leanmind.boilerplace.integration.api
 
 import es.leanmind.boilerplace.domain.models.Pet
 import es.leanmind.boilerplace.domain.models.User
 import es.leanmind.boilerplace.domain.services.UserService
-import es.leanmind.boilerplace.interfaces.ApiIntegrationTest
 import org.json.JSONArray
 import org.json.JSONObject
 import org.junit.Test
-import org.junit.experimental.categories.Category
 import org.junit.runner.RunWith
 import org.mockito.BDDMockito.given
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,14 +20,12 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
-import org.assertj.core.api.Assertions
 
 @SpringBootTest
 @RunWith(SpringRunner::class)
 @AutoConfigureMockMvc
 @WithMockUser("spring")
-@Category(ApiIntegrationTest::class)
-class ExampleApiControllerShould {
+class ExampleApiShould {
 
     @Autowired
     private lateinit var mvc: MockMvc

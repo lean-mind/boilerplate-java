@@ -1,6 +1,5 @@
-package es.leanmind.boilerplace.integration
+package es.leanmind.boilerplace.integration.web
 
-import es.leanmind.boilerplace.IntegrationTests
 import es.leanmind.boilerplace.domain.models.Pet
 import es.leanmind.boilerplace.domain.models.User
 import org.assertj.core.api.Assertions
@@ -21,7 +20,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 @RunWith(SpringRunner::class)
 @AutoConfigureMockMvc
 @WithMockUser("spring")
-class ExampleControllerShould : IntegrationTests() {
+class ExampleWebShould {
     @Autowired
     lateinit var mvc: MockMvc
 
