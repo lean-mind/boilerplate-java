@@ -1,4 +1,11 @@
-# Boilerplace Kotlin+React
+# boilerplate Kotlin
+
+This boilerplate use the following technologies:
+- SprintBoot
+- Hibernate
+- Kotlin
+- Docker
+
 
 __Build project:__
 Configure database:
