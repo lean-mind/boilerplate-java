@@ -1,7 +1,7 @@
 # Project boilerplate
 
 This boilerplate use the following technologies:
-- SprintBoot
+- SpringBoot
 - Hibernate
 - Java
 - Docker
