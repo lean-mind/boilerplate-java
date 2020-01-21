@@ -25,7 +25,7 @@ public class JwtUserDetailsService implements CustomUserService {
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> optionalUser = userRepository.getByEmailAndDeletedFalse(username);
         return optionalUser.map(this::reflectLogin)
-                .orElseThrow(() -> new UsernameNotFoundException("User with  '" + username + "' email not found."));
+            .orElseThrow(() -> new UsernameNotFoundException("User with  '" + username + "' email not found."));
     }
 
     private User reflectLogin(User user) {

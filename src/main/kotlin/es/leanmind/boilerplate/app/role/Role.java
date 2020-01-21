@@ -15,9 +15,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "role")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id", scope = Role.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Role.class)
 @JsonRootName(value = "payload")
 public class Role {
     @Transient

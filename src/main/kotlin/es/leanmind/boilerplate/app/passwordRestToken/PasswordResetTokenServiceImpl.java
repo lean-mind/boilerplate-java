@@ -38,9 +38,9 @@ public class PasswordResetTokenServiceImpl implements PasswordResetTokenService 
     public boolean validateResetToken(Long userId, String tokenValue) {
         Optional<PasswordResetToken> optionalToken = passwordTokenRepository.findByToken(tokenValue);
         boolean validToken = optionalToken
-                .filter(userToken -> !isTokenExpired(userToken))
-                .filter(userToken -> isTokenValid(userToken, userId))
-                .isPresent();
+            .filter(userToken -> !isTokenExpired(userToken))
+            .filter(userToken -> isTokenValid(userToken, userId))
+            .isPresent();
         if (validToken) {
             securityHelper.grantUserChangePasswordPrivilege(optionalToken.get());
             return true;
@@ -50,9 +50,9 @@ public class PasswordResetTokenServiceImpl implements PasswordResetTokenService 
 
     private boolean isTokenValid(PasswordResetToken userToken, Long userId) {
         return Optional.ofNullable(userToken)
-                .map(PasswordResetToken::getUser)
-                .filter(user -> user.getId().equals(userId))
-                .isPresent();
+            .map(PasswordResetToken::getUser)
+            .filter(user -> user.getId().equals(userId))
+            .isPresent();
     }
 
     private boolean isTokenExpired(PasswordResetToken userToken) {

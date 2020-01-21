@@ -20,8 +20,8 @@ public class CentralizedExceptionHandler extends ResponseEntityExceptionHandler 
 
     @Override
     protected ResponseEntity<Object> handleMissingServletRequestParameter(
-            MissingServletRequestParameterException exception, HttpHeaders headers,
-            HttpStatus status, WebRequest request) {
+        MissingServletRequestParameterException exception, HttpHeaders headers,
+        HttpStatus status, WebRequest request) {
         logger.error("Missing servlet request parameter exception.");
         String error = String.format("%s parameter is missing", exception.getParameterName());
         ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, exception.getLocalizedMessage(), error);
@@ -33,9 +33,8 @@ public class CentralizedExceptionHandler extends ResponseEntityExceptionHandler 
                                                                   HttpStatus status, WebRequest request) {
         logger.error("Method argument not valid.");
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
-        String error = fieldErrors.stream()
-                .map(fieldError -> fieldError.getField() + " : " + fieldError.getDefaultMessage())
-                .collect(Collectors.joining());
+        String error = fieldErrors.stream().map(fieldError -> fieldError.getField() + " : " + fieldError.getDefaultMessage())
+            .collect(Collectors.joining());
         ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, exception.getMessage(), error);
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }

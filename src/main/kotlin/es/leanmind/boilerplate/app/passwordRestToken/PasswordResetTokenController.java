@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController("/passwordResetToken")
-@Api(value = "Reset Password", description = "Operations to enable the user replace their password")
+@Api(value = "Reset Password")
 public class PasswordResetTokenController {
 
     private PasswordResetTokenService passwordResetTokenService;

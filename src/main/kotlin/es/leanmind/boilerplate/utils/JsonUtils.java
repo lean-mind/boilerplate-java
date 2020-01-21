@@ -8,10 +8,10 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.nio.charset.Charset;
+
+import static java.nio.charset.StandardCharsets.*;
 
 public class JsonUtils {
-
 
     public static <T> T getElement(String value, Class<T> clazz) {
         return new Gson().fromJson(value, clazz);
@@ -39,7 +39,7 @@ public class JsonUtils {
 
     public static <T> T[] loadJsonFromFile(String path, Class<T[]> clazz, Class<?> loaderClazz) {
         InputStream in = loaderClazz.getResourceAsStream(path);
-        Reader reader = new BufferedReader(new InputStreamReader(in, Charset.forName("UTF-8")));
+        Reader reader = new BufferedReader(new InputStreamReader(in, UTF_8));
         Gson gson = new Gson();
         return gson.fromJson(reader, clazz);
     }

@@ -1,6 +1,5 @@
 package es.leanmind.boilerplate.app.search;
 
-
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 import org.springframework.beans.factory.annotation.Autowired;

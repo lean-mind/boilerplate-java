@@ -56,18 +56,17 @@ public class JwtTokenUtil implements Serializable {
         User user = (User) userDetails;
         final String email = getEmailFromToken(token);
         final Date created = getIssuedAtDateFromToken(token);
-        //final Date expiration = getExpirationDateFromToken(token);
         return (
-                email.equals(user.getUsername())
-                        && !isTokenExpired(token)
-                        && !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate())
+            email.equals(user.getUsername())
+                && !isTokenExpired(token)
+                && !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate())
         );
     }
 
     public Boolean canTokenBeRefreshed(String token, Date lastPasswordReset) {
         final Date created = getIssuedAtDateFromToken(token);
         return !isCreatedBeforeLastPasswordReset(created, lastPasswordReset)
-                && (!isTokenExpired(token) || ignoreTokenExpiration(token));
+            && (!isTokenExpired(token) || ignoreTokenExpiration(token));
     }
 
     public String refreshToken(String token) {
@@ -77,17 +76,17 @@ public class JwtTokenUtil implements Serializable {
         claims.setIssuedAt(createdDate);
         claims.setExpiration(expirationDate);
         return Jwts.builder()
-                .setClaims(claims)
-                .signWith(SignatureAlgorithm.HS512, secret)
-                .compact();
+            .setClaims(claims)
+            .signWith(SignatureAlgorithm.HS512, secret)
+            .compact();
     }
 
 
     private Claims getAllClaimsFromToken(String token) {
         return Jwts.parser()
-                .setSigningKey(secret)
-                .parseClaimsJws(token)
-                .getBody();
+            .setSigningKey(secret)
+            .parseClaimsJws(token)
+            .getBody();
     }
 
     private Boolean isTokenExpired(String token) {
@@ -109,12 +108,12 @@ public class JwtTokenUtil implements Serializable {
         final Date createdDate = clock.now();
         final Date expirationDate = calculateExpirationDate(createdDate);
         return Jwts.builder()
-                .setClaims(claims)
-                .setSubject(subject)
-                .setIssuedAt(createdDate)
-                .setExpiration(expirationDate)
-                .signWith(SignatureAlgorithm.HS512, secret)
-                .compact();
+            .setClaims(claims)
+            .setSubject(subject)
+            .setIssuedAt(createdDate)
+            .setExpiration(expirationDate)
+            .signWith(SignatureAlgorithm.HS512, secret)
+            .compact();
     }
 
     private Date calculateExpirationDate(Date createdDate) {

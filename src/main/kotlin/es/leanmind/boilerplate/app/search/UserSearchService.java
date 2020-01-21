@@ -29,16 +29,15 @@ public class UserSearchService {
 
     @Transactional
     public List<User> findUsersByKeyword(String keyword) {
-        FullTextEntityManager fullTextEntityManager =
-                Search.getFullTextEntityManager(hibernateSearchService.getEntityManager());
+        FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(hibernateSearchService.getEntityManager());
         fullTextEntityManager.flushToIndexes();
-        QueryBuilder queryBuilder = fullTextEntityManager
-                .getSearchFactory().buildQueryBuilder().forEntity(User.class).get();
+        QueryBuilder queryBuilder = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(User.class).get();
+
         Query luceneQuery = queryBuilder.keyword().fuzzy().withEditDistanceUpTo(1)
-                .withPrefixLength(1).onFields("first_name", "last_name", "email")
-                .matching(keyword).createQuery();
-        javax.persistence.Query jpaQuery = fullTextEntityManager.
-                createFullTextQuery(luceneQuery, User.class);
+            .withPrefixLength(1).onFields("first_name", "last_name", "email")
+            .matching(keyword).createQuery();
+
+        javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, User.class);
         return jpaQuery.getResultList();
     }
 }

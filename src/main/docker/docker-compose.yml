@@ -6,7 +6,7 @@ services:
       - "5432:5432"
     restart: always
     environment:
-      POSTGRES_DB: boilerplate-kotlin
+      POSTGRES_DB: boilerplate-java
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 12345
 
@@ -16,6 +16,6 @@ services:
       - "5433:5432"
     restart: always
     environment:
-      POSTGRES_DB: boilerplate-kotlin-tests
+      POSTGRES_DB: boilerplate-java-tests
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 12345

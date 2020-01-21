@@ -8,7 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
+import static java.util.Collections.singletonList;
 
 @Component
 public class SecurityHelper {
@@ -18,7 +18,7 @@ public class SecurityHelper {
     public void grantUserChangePasswordPrivilege(PasswordResetToken passwordResetToken) {
         User user = passwordResetToken.getUser();
         Authentication auth = new UsernamePasswordAuthenticationToken(user, null,
-                Arrays.asList(new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE")));
+            singletonList(new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE")));
         SecurityContextHolder.getContext().setAuthentication(auth);
     }
 }

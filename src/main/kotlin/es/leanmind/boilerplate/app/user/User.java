@@ -201,7 +201,7 @@ public class User implements UserDetails {
         //Hibernate initialize because role on userRole is lazily loaded.
         userRoles.forEach(userRole -> Hibernate.initialize(userRole.getRole()));
         return userRoles.stream().map(userRole -> new SimpleGrantedAuthority(
-                userRole.getRole().getName().name())).collect(Collectors.toList());
+            userRole.getRole().getName().name())).collect(Collectors.toList());
     }
 
     @Override

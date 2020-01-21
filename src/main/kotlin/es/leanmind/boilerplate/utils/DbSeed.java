@@ -1,6 +1,5 @@
 package es.leanmind.boilerplate.utils;
 
-
 import es.leanmind.boilerplate.app.role.Role;
 import es.leanmind.boilerplate.app.role.RoleType;
 import es.leanmind.boilerplate.app.user.User;

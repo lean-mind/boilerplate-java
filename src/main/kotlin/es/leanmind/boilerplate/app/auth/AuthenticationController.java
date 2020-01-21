@@ -21,10 +21,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotNull;
 
 @RestController
-@Api(value = "Authentication", description = "Operations that handle user authentication")
-public class AuthController {
+@Api(value = "Authentication")
+public class AuthenticationController {
 
-    private Logger logger = LoggerFactory.getLogger(AuthController.class);
+    private Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
     @Value("${jwt.header}")
     private String tokenHeader;
     @Autowired

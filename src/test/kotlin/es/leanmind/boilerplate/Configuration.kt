@@ -15,7 +15,7 @@ class Configuration {
         val firefoxDriverPath: String = "./src/test/geckodriver"
         val dbUser: String = "leanmind"
         val dbPassword: String = "12345"
-        val productionDb: String = "boilerplate-kotlin"
+        val productionDb: String = "boilerplate-java"
         val connectionBaseUrl: String = "jdbc:postgresql://localhost:5432/"
         val testDb: String = productionDb + "-test"
         val connectionTestDatabase: String = connectionBaseUrl + testDb + "?name=" + dbUser + "&password=" + dbPassword
